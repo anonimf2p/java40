@@ -9,7 +9,7 @@ Kod bazowy programu Commit4_0:
 
 import java.io.IOException;
 
-class Main {
+class Main {    
   public static void main(String[] args) {
     try {
       Service s = new Service();
