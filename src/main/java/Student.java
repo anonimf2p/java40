@@ -6,6 +6,7 @@ public class Student {
   public Student(String name, int age) {
     Name = name;
     Age = age;
+
   }
 
   public String GetName() {return Name;}
