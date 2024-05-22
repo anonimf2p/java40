@@ -6,32 +6,49 @@ Kod bazowy programu Commit4_0:
 • Klasa Service obsługuje odczyt i zapis do pliku bazy danych.
 • Klasa Student reprezentuje pojedynczego studenta (Imię, Wiek).
 */
-
-
+import java.util.Scanner;
 import java.io.IOException;
-import java.lang.Math;
-import java.util.Random;
-
-import java.util.Scanner; // Add this import statement
 class Main {
-public static void main(String[] args) {
-try {
-Service s = new Service();
-Scanner scanner = new Scanner(System.in);
-System.out.println("imie studenta: ");
-System.out.println("nazwisko studenta: ");
-String name = scanner.next();
-String nazwisko = scanner.next();
-System.out.println("wiek studenta: ");
-int age = scanner.nextInt();
-s.addStudent(new Student(name, age));
-s.addStudent(new Student("Krzysztof", 20));
-s.addStudent(new Student("Janusz", 40));
-var students = s.getStudents();
-for(Student current : students) {
-System.out.println(current.toString()); // Update to use toString method
-}
-} catch (IOException e) {
-}
-}
+  public static void main(String[] args) {
+    try {
+      Service s = new Service();
+      
+      System.out.print("Co chcesz zrobić:\n");
+      System.out.print("1 - dodac studenta \n");
+      System.out.print("2 - wyswietlic studentow \n");
+          System.out.print("0 - zakonczyc programu \n");
+    
+      Scanner scanner = new Scanner(System.in);
+      while (true) {
+        int wybor = scanner.nextInt();
+
+        switch (wybor) {
+          case 0:
+            // zadanie 4_3
+            System.out.println("Koniec programu.");
+            return;
+          case 1:
+            // zadanie 4_1
+            Scanner name = new Scanner(System.in);
+            Scanner age = new Scanner(System.in);
+            Scanner lname = new Scanner(System.in);
+            
+            System.out.print("imie: ");
+            String imie = name.nextLine();
+            System.out.print("nazwisko: ");
+            String nazwisko = lname.nextLine();
+            int wiek = age.nextInt();
+            System.out.print("wiek studenta: ");
+            s.addStudent(new Student(imie, nazwisko, wiek)); // Separate name and last name while creating the Student object
+            break;
+          case 2:
+            var students = s.getStudents();
+            for (Student current : students) {
+              System.out.println(current.ToString());
+            }
+        }
+      }
+    } catch (IOException e) {
+    }
+  }
 }
